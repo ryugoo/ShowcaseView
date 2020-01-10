@@ -15,76 +15,77 @@
  */
 
 buildscript {
-    repositories {
-        mavenCentral()
-    }
+  repositories {
+    google()
+    jcenter()
+  }
 
-    dependencies {
-        classpath 'com.android.tools.build:gradle:1.5.0'
-    }
+  dependencies {
+    classpath 'com.android.tools.build:gradle:3.5.3'
+  }
 }
 
 repositories {
-    mavenCentral()
-    maven {
-        url 'https://oss.sonatype.org/content/repositories/snapshots'
-    }
+  google()
+  jcenter()
+  maven {
+    url 'https://oss.sonatype.org/content/repositories/snapshots'
+  }
 }
 
 apply plugin: 'com.android.application'
 
 dependencies {
-    compile project(':library')
-    //compile 'com.github.amlcurran.showcaseview:library:5.0.0-SNAPSHOT'
-    compile 'com.android.support:support-v4:23.1.1'
-    compile 'com.nineoldandroids:library:2.4.0'
-    compile 'com.android.support:appcompat-v7:23.1.1'
+  implementation project(':library')
+  //implementation 'com.github.amlcurran.showcaseview:library:5.0.0-SNAPSHOT'
+  //implementation 'com.nineoldandroids:library:2.4.0'
+  implementation 'androidx.appcompat:appcompat:1.1.0'
 }
 
 android {
-    compileSdkVersion Integer.parseInt(COMPILE_SDK)
-    buildToolsVersion BUILD_TOOLS_VERSION
+  compileSdkVersion Integer.parseInt(COMPILE_SDK)
+  buildToolsVersion BUILD_TOOLS_VERSION
 
-    defaultConfig {
-        versionName parseVersionName()
-        versionCode Integer.parseInt(VERSION_CODE)
-        targetSdkVersion Integer.parseInt(TARGET_SDK)
-        minSdkVersion Integer.parseInt(MIN_SDK_SAMPLE)
-    }
+  defaultConfig {
+    versionName parseVersionName()
+    versionCode Integer.parseInt(VERSION_CODE)
+    targetSdkVersion Integer.parseInt(TARGET_SDK)
+    minSdkVersion Integer.parseInt(MIN_SDK_SAMPLE)
+  }
 
-    signingConfigs {
-        release {
-            storeFile file(project.hasProperty("SHOWCASEVIEW_KEYSTORE_LOCATION") ? SHOWCASEVIEW_KEYSTORE_LOCATION : "/Users/amlcurran/.android/debug.keystore")
-            storePassword returnDefault("SHOWCASEVIEW_KEYSTORE_PW")
-            keyAlias returnDefault("SHOWCASEVIEW_KEY_ALIAS")
-            keyPassword returnDefault("SHOWCASEVIEW_KEY_PW")
-        }
+  signingConfigs {
+    release {
+      storeFile file(project.hasProperty("SHOWCASEVIEW_KEYSTORE_LOCATION") ? SHOWCASEVIEW_KEYSTORE_LOCATION : "/Users/amlcurran/.android/debug.keystore")
+      storePassword returnDefault("SHOWCASEVIEW_KEYSTORE_PW")
+      keyAlias returnDefault("SHOWCASEVIEW_KEY_ALIAS")
+      keyPassword returnDefault("SHOWCASEVIEW_KEY_PW")
     }
+  }
 
-    lintOptions {
-        abortOnError false
-    }
+  lintOptions {
+    abortOnError false
+  }
 
-    buildTypes {
-        release {
-            signingConfig signingConfigs.release
-        }
+  buildTypes {
+    release {
+      signingConfig signingConfigs.release
     }
+  }
 }
 
 def returnDefault(String propertyName) {
-   if (project.hasProperty(propertyName)) {
-       return project.property(propertyName)
-   } else {
-       return ""
-   }
+  if (project.hasProperty(propertyName)) {
+    return project.property(propertyName)
+  } else {
+    return ""
+  }
 }
 
 def parseVersionName() {
-    if (project.hasProperty("versionName")) {
-        return project.property("versionName")
-    } else {
-        println("No version name supplied, using default")
-        return "0"
-    }
+  if (project.hasProperty("versionName")) {
+    return project.property("versionName")
+  } else {
+    println("No version name supplied, using default")
+    return "0"
+  }
 }

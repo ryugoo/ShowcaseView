@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright 2014 Alex Curran
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,5 +15,5 @@
   -->
 
 <resources>
-  <color name="custom_showcase_bg">#b9002153</color>
+    <color name="custom_showcase_bg">#b9002153</color>
 </resources>

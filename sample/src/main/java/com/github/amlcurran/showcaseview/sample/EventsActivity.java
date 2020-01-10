@@ -1,9 +1,6 @@
 package com.github.amlcurran.showcaseview.sample;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableStringBuilder;
 import android.view.MotionEvent;
 import android.view.animation.Interpolator;
@@ -15,6 +12,10 @@ import com.github.amlcurran.showcaseview.OnShowcaseEventListener;
 import com.github.amlcurran.showcaseview.ShowcaseView;
 import com.github.amlcurran.showcaseview.SimpleShowcaseEventListener;
 import com.github.amlcurran.showcaseview.targets.ViewTarget;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.ViewCompat;
 
 public class EventsActivity extends AppCompatActivity {
 
@@ -28,14 +29,14 @@ public class EventsActivity extends AppCompatActivity {
 
         MultiEventListener multiEventListener = new MultiEventListener(new LogToTextListener(eventLog), new ShakeButtonListener(customButton));
         new ShowcaseView.Builder(this)
-                .withMaterialShowcase()
-                .setStyle(R.style.CustomShowcaseTheme3)
-                .setTarget(new ViewTarget(R.id.imageView, this))
-                .setContentTitle("Events")
-                .setContentText("Listening to ShowcaseView events is easy!")
-                .setShowcaseEventListener(multiEventListener)
-                .replaceEndButton(customButton)
-                .build();
+            .withMaterialShowcase()
+            .setStyle(R.style.CustomShowcaseTheme3)
+            .setTarget(new ViewTarget(R.id.imageView, this))
+            .setContentTitle("Events")
+            .setContentText("Listening to ShowcaseView events is easy!")
+            .setShowcaseEventListener(multiEventListener)
+            .replaceEndButton(customButton)
+            .build();
     }
 
     private static class LogToTextListener implements OnShowcaseEventListener {
@@ -86,8 +87,8 @@ public class EventsActivity extends AppCompatActivity {
         public void onShowcaseViewTouchBlocked(MotionEvent motionEvent) {
             int translation = getResources().getDimensionPixelOffset(R.dimen.touch_button_wobble);
             ViewCompat.animate(button)
-                    .translationXBy(translation)
-                    .setInterpolator(new WobblyInterpolator(3));
+                .translationXBy(translation)
+                .setInterpolator(new WobblyInterpolator(3));
         }
     }
 

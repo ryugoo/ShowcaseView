@@ -41,8 +41,8 @@ class ActionBarReflector implements Reflector {
         View homeButton = mActivity.findViewById(android.R.id.home);
         if (homeButton == null) {
             throw new RuntimeException(
-                    "insertShowcaseViewWithType cannot be used when the theme " +
-                            "has no ActionBar");
+                "insertShowcaseViewWithType cannot be used when the theme " +
+                    "has no ActionBar");
         }
         return homeButton;
     }

@@ -1,5 +1,5 @@
 def isReleaseBuild() {
-    return version.contains("SNAPSHOT") == false
+  return version.contains("SNAPSHOT") == false
 }
 
 /*
@@ -23,7 +23,7 @@ allprojects {
   version = VERSION_CODE
 
   repositories {
-    mavenCentral()
+    jcenter()
   }
 
   tasks.withType(JavaCompile) {
@@ -31,4 +31,4 @@ allprojects {
   }
 }
 
-apply from:'release.gradle'
+apply from: 'release.gradle'

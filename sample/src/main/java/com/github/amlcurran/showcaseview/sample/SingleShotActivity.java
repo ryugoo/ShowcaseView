@@ -33,10 +33,10 @@ public class SingleShotActivity extends Activity {
 
         Target viewTarget = new ViewTarget(R.id.button, this);
         new ShowcaseView.Builder(this)
-                .setTarget(viewTarget)
-                .setContentTitle(R.string.title_single_shot)
-                .setContentText(R.string.R_string_desc_single_shot)
-                .singleShot(42)
-                .build();
+            .setTarget(viewTarget)
+            .setContentTitle(R.string.title_single_shot)
+            .setContentText(R.string.R_string_desc_single_shot)
+            .singleShot(42)
+            .build();
     }
 }

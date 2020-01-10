@@ -32,13 +32,13 @@ public class CustomTextActivity extends Activity {
         title.setTypeface(Typeface.createFromAsset(getAssets(), "RobotoSlab-Regular.ttf"));
 
         ShowcaseView showcaseView = new ShowcaseView.Builder(this)
-                .withNewStyleShowcase()
-                .setTarget(new ViewTarget(R.id.imageView, this))
-                .setContentTextPaint(paint)
-                .setContentTitle(R.string.custom_text_painting_title)
-                .setContentText(R.string.custom_text_painting_text)
-                .setContentTitlePaint(title)
-                .build();
+            .withNewStyleShowcase()
+            .setTarget(new ViewTarget(R.id.imageView, this))
+            .setContentTextPaint(paint)
+            .setContentTitle(R.string.custom_text_painting_title)
+            .setContentText(R.string.custom_text_painting_text)
+            .setContentTitlePaint(title)
+            .build();
 
         showcaseView.setDetailTextAlignment(Layout.Alignment.ALIGN_CENTER);
         showcaseView.setTitleTextAlignment(Layout.Alignment.ALIGN_CENTER);

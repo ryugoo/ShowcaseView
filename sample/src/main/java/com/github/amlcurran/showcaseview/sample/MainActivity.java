@@ -22,8 +22,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -41,8 +39,11 @@ import com.github.amlcurran.showcaseview.ShowcaseView;
 import com.github.amlcurran.showcaseview.sample.animations.AnimationSampleActivity;
 import com.github.amlcurran.showcaseview.targets.ViewTarget;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener,
-        OnShowcaseEventListener, AdapterView.OnItemClickListener {
+    OnShowcaseEventListener, AdapterView.OnItemClickListener {
 
     private static final float ALPHA_DIM_VALUE = 0.1f;
 
@@ -72,14 +73,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         ViewTarget target = new ViewTarget(R.id.buttonBlocked, this);
         sv = new ShowcaseView.Builder(this)
-                .withMaterialShowcase()
-                .setTarget(target)
-                .setContentTitle(R.string.showcase_main_title)
-                .setContentText(R.string.showcase_main_message)
-                .setStyle(R.style.CustomShowcaseTheme2)
-                .setShowcaseEventListener(this)
-                .replaceEndButton(R.layout.view_custom_button)
-                .build();
+            .withMaterialShowcase()
+            .setTarget(target)
+            .setContentTitle(R.string.showcase_main_title)
+            .setContentText(R.string.showcase_main_message)
+            .setStyle(R.style.CustomShowcaseTheme2)
+            .setShowcaseEventListener(this)
+            .replaceEndButton(R.layout.view_custom_button)
+            .build();
         sv.setButtonPosition(lps);
     }
 
@@ -135,6 +136,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(new Intent(this, DemoOption.values()[position].activityClass));
     }
 
+    private enum DemoOption {
+        ACTION_ITEMS(R.string.title_action_items, R.string.sum_action_items, ActionItemsSampleActivity.class),
+        FRAGMENTS(R.string.title_fragments, R.string.sum_fragments, FragmentDemoActivity.class),
+        EVENTS(R.string.title_events, R.string.sum_event, EventsActivity.class),
+        SINGLE_SHOT(R.string.title_single_shot, R.string.sum_single_shot, SingleShotActivity.class),
+        ANIMATIONS(R.string.title_animations, R.string.sum_animations, AnimationSampleActivity.class),
+        CUSTOM_TEXT(R.string.custom_text, R.string.custom_text_summary, CustomTextActivity.class),
+        CUSTOM_SHOWCASE(R.string.custom_showcase_title, R.string.custom_showcase_summary, CustomShowcaseActivity.class),
+        MEMORY(R.string.title_memory, R.string.sum_memory, MemoryManagementTesting.class);
+
+        final int titleRes;
+        final int summaryRes;
+        final Class<? extends Activity> activityClass;
+
+        DemoOption(int titleRes, int summaryRes, Class<? extends Activity> activityClass) {
+            this.titleRes = titleRes;
+            this.summaryRes = summaryRes;
+            this.activityClass = activityClass;
+        }
+
+    }
+
     private static class HardcodedListAdapter extends ArrayAdapter {
 
         public HardcodedListAdapter(Context context) {
@@ -156,28 +179,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             ((TextView) convertView.findViewById(R.id.textView2)).setText(currentOption.summaryRes);
             return convertView;
         }
-    }
-
-    private enum DemoOption {
-        ACTION_ITEMS(R.string.title_action_items, R.string.sum_action_items, ActionItemsSampleActivity.class),
-        FRAGMENTS(R.string.title_fragments, R.string.sum_fragments, FragmentDemoActivity.class),
-        EVENTS(R.string.title_events, R.string.sum_event, EventsActivity.class),
-        SINGLE_SHOT(R.string.title_single_shot, R.string.sum_single_shot, SingleShotActivity.class),
-        ANIMATIONS(R.string.title_animations, R.string.sum_animations, AnimationSampleActivity.class),
-        CUSTOM_TEXT(R.string.custom_text, R.string.custom_text_summary, CustomTextActivity.class),
-        CUSTOM_SHOWCASE(R.string.custom_showcase_title, R.string.custom_showcase_summary, CustomShowcaseActivity.class),
-        MEMORY(R.string.title_memory, R.string.sum_memory, MemoryManagementTesting.class);
-
-        final int titleRes;
-        final int summaryRes;
-        final Class<? extends Activity> activityClass;
-
-        DemoOption(int titleRes, int summaryRes, Class<? extends Activity> activityClass) {
-            this.titleRes = titleRes;
-            this.summaryRes = summaryRes;
-            this.activityClass = activityClass;
-        }
-
     }
 
 }

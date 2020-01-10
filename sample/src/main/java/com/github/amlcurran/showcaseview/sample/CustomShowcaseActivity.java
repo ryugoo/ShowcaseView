@@ -23,11 +23,11 @@ public class CustomShowcaseActivity extends Activity {
         setContentView(R.layout.activity_custom_showcase);
 
         new ShowcaseView.Builder(this)
-                .setTarget(new ViewTarget(R.id.imageView, this))
-                .setContentTitle(R.string.custom_text_painting_title)
-                .setContentText(R.string.custom_text_painting_text)
-                .setShowcaseDrawer(new CustomShowcaseView(getResources()))
-                .build();
+            .setTarget(new ViewTarget(R.id.imageView, this))
+            .setContentTitle(R.string.custom_text_painting_title)
+            .setContentText(R.string.custom_text_painting_text)
+            .setShowcaseDrawer(new CustomShowcaseView(getResources()))
+            .build();
     }
 
     private static class CustomShowcaseView implements ShowcaseDrawer {

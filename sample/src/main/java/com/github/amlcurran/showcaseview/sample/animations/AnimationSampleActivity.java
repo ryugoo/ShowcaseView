@@ -48,9 +48,9 @@ public class AnimationSampleActivity extends Activity implements View.OnClickLis
         textView3 = (TextView) findViewById(R.id.textView3);
 
         showcaseView = new ShowcaseView.Builder(this)
-                .setTarget(new ViewTarget(findViewById(R.id.textView)))
-                .setOnClickListener(this)
-                .build();
+            .setTarget(new ViewTarget(findViewById(R.id.textView)))
+            .setOnClickListener(this)
+            .build();
         showcaseView.setButtonText(getString(R.string.next));
     }
 

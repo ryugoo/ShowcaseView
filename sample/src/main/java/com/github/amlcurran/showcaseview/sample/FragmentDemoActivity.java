@@ -1,9 +1,6 @@
 package com.github.amlcurran.showcaseview.sample;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +10,10 @@ import com.espian.showcaseview.sample.R;
 import com.github.amlcurran.showcaseview.ShowcaseView;
 import com.github.amlcurran.showcaseview.SimpleShowcaseEventListener;
 import com.github.amlcurran.showcaseview.targets.ViewTarget;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 public class FragmentDemoActivity extends AppCompatActivity {
 
@@ -24,9 +25,9 @@ public class FragmentDemoActivity extends AppCompatActivity {
 
     public void onHiddenFirstShowcase() {
         getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.fragment_host_two, new SecondDemoFragment())
-                .commit();
+            .beginTransaction()
+            .replace(R.id.fragment_host_two, new SecondDemoFragment())
+            .commit();
     }
 
     public static class FirstDemoFragment extends Fragment {
@@ -44,21 +45,21 @@ public class FragmentDemoActivity extends AppCompatActivity {
         public void onActivityCreated(@Nullable Bundle savedInstanceState) {
             super.onActivityCreated(savedInstanceState);
             new ShowcaseView.Builder(getActivity())
-                    .withMaterialShowcase()
-                    .setStyle(R.style.CustomShowcaseTheme)
-                    .setTarget(new ViewTarget(button))
-                    .hideOnTouchOutside()
-                    .setContentTitle(R.string.showcase_fragment_title)
-                    .setContentText(R.string.showcase_fragment_message)
-                    .setShowcaseEventListener(new SimpleShowcaseEventListener() {
+                .withMaterialShowcase()
+                .setStyle(R.style.CustomShowcaseTheme)
+                .setTarget(new ViewTarget(button))
+                .hideOnTouchOutside()
+                .setContentTitle(R.string.showcase_fragment_title)
+                .setContentText(R.string.showcase_fragment_message)
+                .setShowcaseEventListener(new SimpleShowcaseEventListener() {
 
-                        @Override
-                        public void onShowcaseViewDidHide(ShowcaseView showcaseView) {
-                            ((FragmentDemoActivity) getActivity()).onHiddenFirstShowcase();
-                        }
+                    @Override
+                    public void onShowcaseViewDidHide(ShowcaseView showcaseView) {
+                        ((FragmentDemoActivity) getActivity()).onHiddenFirstShowcase();
+                    }
 
-                    })
-                    .build();
+                })
+                .build();
         }
 
     }
@@ -78,13 +79,13 @@ public class FragmentDemoActivity extends AppCompatActivity {
         public void onActivityCreated(@Nullable Bundle savedInstanceState) {
             super.onActivityCreated(savedInstanceState);
             new ShowcaseView.Builder(getActivity())
-                    .withMaterialShowcase()
-                    .setStyle(R.style.CustomShowcaseTheme2)
-                    .setTarget(new ViewTarget(button))
-                    .hideOnTouchOutside()
-                    .setContentTitle(R.string.showcase_fragment_title_2)
-                    .setContentText(R.string.showcase_fragment_message_2)
-                    .build();
+                .withMaterialShowcase()
+                .setStyle(R.style.CustomShowcaseTheme2)
+                .setTarget(new ViewTarget(button))
+                .hideOnTouchOutside()
+                .setContentTitle(R.string.showcase_fragment_title_2)
+                .setContentText(R.string.showcase_fragment_message_2)
+                .build();
         }
 
     }

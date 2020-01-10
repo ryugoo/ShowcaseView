@@ -37,19 +37,19 @@ public class MemoryManagementTesting extends Activity {
 
     private void showcase() {
         new ShowcaseView.Builder(this)
-                .withMaterialShowcase()
-                .setContentText(String.format("Showing %1$d", currentShowcase))
-                .setTarget(new ViewTarget(R.id.buttonBlocked, this))
-                .setShowcaseEventListener(
-                        new SimpleShowcaseEventListener() {
-                            @Override
-                            public void onShowcaseViewDidHide(ShowcaseView showcaseView) {
-                                currentShowcase++;
-                                showcase();
-                            }
-                        }
-                )
-                .build();
+            .withMaterialShowcase()
+            .setContentText(String.format("Showing %1$d", currentShowcase))
+            .setTarget(new ViewTarget(R.id.buttonBlocked, this))
+            .setShowcaseEventListener(
+                new SimpleShowcaseEventListener() {
+                    @Override
+                    public void onShowcaseViewDidHide(ShowcaseView showcaseView) {
+                        currentShowcase++;
+                        showcase();
+                    }
+                }
+            )
+            .build();
     }
 
 }

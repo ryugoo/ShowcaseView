@@ -1,7 +1,9 @@
-task showcaseViewRelease << {
+task showcaseViewRelease {
+  doLast {
     if (!project.hasProperty("versionName")) {
-        throw new TaskExecutionException(tasks['commitRelease'], new NullPointerException("No version name supplied"))
+      throw new TaskExecutionException(tasks['commitRelease'], new NullPointerException("No version name supplied"))
     }
+  }
 }
 
 showcaseViewRelease.dependsOn('editReadme')
@@ -9,16 +11,16 @@ showcaseViewRelease.dependsOn('library:uploadArchives')
 showcaseViewRelease.finalizedBy('commitRelease')
 
 task commitRelease(type: Exec) {
-    commandLine 'git', "commit", "README.md", "-m", "Update to version " + getVersionName()
+  commandLine 'git', "commit", "README.md", "-m", "Update to version " + getVersionName()
 }
 
 task createGithubRelease(type: Exec) {
-    def versionName = getVersionName()
-    def jsonData = JsonOutput.toJson([
-            tag_name: "$versionName",
-            name    : "$versionName",
-            draft   : true])
-    commandLine "curl", "--data", jsonData, "-u", "amlcurran:" + System.getenv('GITHUB_TOKEN'), "https://api.github.com/repos/amlcurran/ShowcaseView/releases"
+  def versionName = getVersionName()
+  def jsonData = JsonOutput.toJson([
+    tag_name: "$versionName",
+    name    : "$versionName",
+    draft   : true])
+  commandLine "curl", "--data", jsonData, "-u", "amlcurran:" + System.getenv('GITHUB_TOKEN'), "https://api.github.com/repos/amlcurran/ShowcaseView/releases"
 }
 
 
@@ -26,19 +28,19 @@ import groovy.json.JsonOutput
 import org.apache.tools.ant.filters.ReplaceTokens
 
 task editReadme(type: Copy) {
-    from('.') {
-        include 'README-template.md'
-        rename('README-template.md', 'README.md')
-        filter(ReplaceTokens, tokens: ['version': versionName])
-    }
-    into '.'
+  from('.') {
+    include 'README-template.md'
+    rename('README-template.md', 'README.md')
+    filter(ReplaceTokens, tokens: ['version': versionName])
+  }
+  into '.'
 }
 
 def getVersionName() {
-    if (project.hasProperty("versionName")) {
-        return project.property("versionName")
-    } else {
-        println("using default version no.")
-        return ""
-    }
+  if (project.hasProperty("versionName")) {
+    return project.property("versionName")
+  } else {
+    println("using default version no.")
+    return ""
+  }
 }

@@ -19,31 +19,9 @@ package com.github.amlcurran.showcaseview;
 import android.view.MotionEvent;
 
 /**
-* @author Alex
-*/
+ * @author Alex
+ */
 public interface OnShowcaseEventListener {
-
-    /**
-     * Called when the ShowcaseView has been told to hide. Use {@link #onShowcaseViewDidHide(ShowcaseView)}
-     * if you want to know when the ShowcaseView has been fully hidden.
-     */
-    void onShowcaseViewHide(ShowcaseView showcaseView);
-
-    /**
-     * Called when the animation hiding the ShowcaseView has finished, and it is no longer visible on the screen.
-     */
-    void onShowcaseViewDidHide(ShowcaseView showcaseView);
-
-    /**
-     * Called when the ShowcaseView is shown.
-     */
-    void onShowcaseViewShow(ShowcaseView showcaseView);
-
-    /**
-     * Called when the user has touched on the ShowcaseView, but the touch was blocked
-     * @param motionEvent the blocked event
-     */
-    void onShowcaseViewTouchBlocked(MotionEvent motionEvent);
 
     /**
      * Empty implementation of OnShowcaseViewEventListener such that null
@@ -70,4 +48,27 @@ public interface OnShowcaseEventListener {
 
         }
     };
+
+    /**
+     * Called when the ShowcaseView has been told to hide. Use {@link #onShowcaseViewDidHide(ShowcaseView)}
+     * if you want to know when the ShowcaseView has been fully hidden.
+     */
+    void onShowcaseViewHide(ShowcaseView showcaseView);
+
+    /**
+     * Called when the animation hiding the ShowcaseView has finished, and it is no longer visible on the screen.
+     */
+    void onShowcaseViewDidHide(ShowcaseView showcaseView);
+
+    /**
+     * Called when the ShowcaseView is shown.
+     */
+    void onShowcaseViewShow(ShowcaseView showcaseView);
+
+    /**
+     * Called when the user has touched on the ShowcaseView, but the touch was blocked
+     *
+     * @param motionEvent the blocked event
+     */
+    void onShowcaseViewTouchBlocked(MotionEvent motionEvent);
 }

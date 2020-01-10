@@ -15,45 +15,46 @@
  */
 
 buildscript {
-    repositories {
-        mavenCentral()
-    }
+  repositories {
+    google()
+    jcenter()
+  }
 
-    dependencies {
-        classpath 'com.android.tools.build:gradle:1.5.0'
-    }
+  dependencies {
+    classpath 'com.android.tools.build:gradle:3.5.3'
+  }
 }
 
 apply plugin: 'com.android.library'
 apply plugin: 'maven'
 
 dependencies {
-    repositories {
-        mavenCentral()
-    }
-    compile 'com.android.support:support-annotations:23.1.1'
-    compile 'com.android.support:support-v4:23.1.1'
+  repositories {
+    google()
+  }
+  implementation 'androidx.annotation:annotation:1.1.0'
+  implementation 'androidx.appcompat:appcompat:1.1.0'
 }
 
 android {
-    compileSdkVersion Integer.parseInt(COMPILE_SDK)
-    buildToolsVersion BUILD_TOOLS_VERSION
+  compileSdkVersion Integer.parseInt(COMPILE_SDK)
+  buildToolsVersion BUILD_TOOLS_VERSION
 
-    defaultConfig {
-        versionName String.valueOf(parseVersionName())
-        versionCode Integer.parseInt(VERSION_CODE)
-        targetSdkVersion Integer.parseInt(TARGET_SDK)
-        minSdkVersion Integer.parseInt(MIN_SDK_LIBRARY)
-    }
+  defaultConfig {
+    versionName String.valueOf(parseVersionName())
+    versionCode Integer.parseInt(VERSION_CODE)
+    targetSdkVersion Integer.parseInt(TARGET_SDK)
+    minSdkVersion Integer.parseInt(MIN_SDK_LIBRARY)
+  }
 }
 
 def parseVersionName() {
-    if (project.hasProperty('versionName')) {
-        return versionName
-    } else {
-        println("No version name supplied, using default")
-        return "0"
-    }
+  if (project.hasProperty('versionName')) {
+    return versionName
+  } else {
+    println("No version name supplied, using default")
+    return "0"
+  }
 }
 
 apply from: 'gradle-mvn-push.gradle'

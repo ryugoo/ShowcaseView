@@ -18,10 +18,11 @@ package com.github.amlcurran.showcaseview.sample;
 
 import android.graphics.Point;
 import android.support.annotation.IdRes;
-import android.support.v7.widget.Toolbar;
 
 import com.github.amlcurran.showcaseview.targets.Target;
 import com.github.amlcurran.showcaseview.targets.ViewTarget;
+
+import androidx.appcompat.widget.Toolbar;
 
 /**
  * Represents an Action item to showcase (e.g., one of the buttons on an ActionBar).

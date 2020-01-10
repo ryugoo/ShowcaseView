@@ -46,8 +46,8 @@ class AppCompatReflector implements Reflector {
         homeButton = mActivity.findViewById(homeId);
         if (homeButton == null) {
             throw new RuntimeException(
-                    "insertShowcaseViewWithType cannot be used when the theme " +
-                            "has no ActionBar");
+                "insertShowcaseViewWithType cannot be used when the theme " +
+                    "has no ActionBar");
         }
         return homeButton;
     }

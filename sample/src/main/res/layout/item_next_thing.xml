@@ -17,26 +17,27 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:minHeight="64dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="8dp"
-    android:paddingBottom="8dp" >
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:minHeight="64dp"
+              android:orientation="vertical"
+              android:paddingLeft="16dp"
+              android:paddingTop="8dp"
+              android:paddingRight="16dp"
+              android:paddingBottom="8dp">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/ListItemBigtext"
         android:id="@+id/textView"
-        android:text="fhfhehw" />
-
-    <TextView
+        style="@style/ListItemBigtext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/ListItemSubtext"
+        android:text="fhfhehw"/>
+
+    <TextView
         android:id="@+id/textView2"
-        android:text="hffhshsh" />
+        style="@style/ListItemSubtext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="hffhshsh"/>
 
 </LinearLayout>

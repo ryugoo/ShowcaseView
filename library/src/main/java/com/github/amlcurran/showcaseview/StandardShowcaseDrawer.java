@@ -23,7 +23,8 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.drawable.Drawable;
-import android.support.v4.content.res.ResourcesCompat;
+
+import androidx.core.content.res.ResourcesCompat;
 
 class StandardShowcaseDrawer implements ShowcaseDrawer {
 
@@ -59,8 +60,8 @@ class StandardShowcaseDrawer implements ShowcaseDrawer {
         int left = (int) (x - halfW);
         int top = (int) (y - halfH);
         showcaseDrawable.setBounds(left, top,
-                left + getShowcaseWidth(),
-                top + getShowcaseHeight());
+            left + getShowcaseWidth(),
+            top + getShowcaseHeight());
         showcaseDrawable.draw(bufferCanvas);
     }
 
